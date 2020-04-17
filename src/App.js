@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.scss';
-import Header from './components/Header';
+import React, { Fragment } from 'react';
+import Header from './components/shared/Header';
+import RentalHome from './pages/RentalHome';
 
 function App() {
   return (
-    <Header />
+    <Fragment>
+      <Header />
+      <RentalHome />
+    </Fragment>
   );
 }
 

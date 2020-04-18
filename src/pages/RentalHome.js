@@ -50,7 +50,7 @@ const RentalHome = () => {
 
   return (
     <section id="rentals">
-      <h1 className="is-size-2">Book unique homes and experiences today.</h1>
+      <h1 className="has-text-primary has-text-centered is-size-2">Book unique homes and experiences today.</h1>
       <div className="columns is-multiline">
         {
           rentals.map((rental, index) => {

@@ -1,32 +1,34 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom';
+
 import './Header.scss';
 
 const Header = () => {
-  const [isActive, setisActive] = React.useState(false);
+  const [isBurgerActive, setisBurgerActive] = React.useState(false);
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="#">
+      <div className="vicinity-brand navbar-brand">
+        <Link className="navbar-item" to="/">
           <strong className="is-size-4">vicinity</strong>
-        </a>
+        </Link>
 
-        <a onClick={() => {
-          setisActive(!isActive);
+        <button onClick={() => {
+          setisBurgerActive(!isBurgerActive);
         }}
-          role="button"
-          className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+          className={`navbar-burger burger ${isBurgerActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-main">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-        </a>
+        </button>
       </div>
 
       <div id="navbar-main"
-        className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}>
         <div className="navbar-start">
           <div className="navbar-item">
             <div className="field has-addons">
@@ -44,22 +46,22 @@ const Header = () => {
         </div>
 
         <div className="navbar-end is-size-8">
-          <a className="navbar-item">Host your home</a>
+          <Link className="navbar-item" to="/">Host your home</Link>
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">Manage</a>
             <div className="navbar-dropdown">
-              <a className="navbar-item">About</a>
-              <a className="navbar-item">Jobs</a>
-              <a className="navbar-item">Contact</a>
+              <Link className="navbar-item" to="/">About</Link>
+              <Link className="navbar-item" to="/">Jobs</Link>
+              <Link className="navbar-item" to="/">Contact</Link>
               <hr className="navbar-divider" />
-              <a className="navbar-item">Report an issue</a>
+              <Link className="navbar-item" to="/">Report an issue</Link>
             </div>
           </div>
 
-          <div className="navbar-item">
+          <div className="vicinity-navbar-end navbar-item">
             <div className="buttons">
-              <a className="button is-primary">Sign up</a>
-              <a className="button is-light">Log in</a>
+              <Link className="button is-primary" to="/signup">Sign up</Link>
+              <Link className="button is-light" to="/login">Log in</Link>
             </div>
           </div>
 

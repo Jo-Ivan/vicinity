@@ -3,13 +3,13 @@
 // Import a Google Font
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap");
 
-// // Set your brand colors
+// Set your brand colors
 $red: #ff5a5f;
 $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
-// // Update Bulma's global variables
+// Update Bulma's global variables
 $family-sans-serif: "Montserrat",
 sans-serif;
 $grey-dark: $brown;
@@ -19,11 +19,20 @@ $link: $red;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-// // Update some of Bulma's component variables
+// Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+
+html,
+body {
+  height: 100%;
+}
+
+.vicinity-container {
+  padding-top: 20px;
+}
 
 // Import only what you need from Bulma
 // @import "../node_modules/bulma/sass/utilities/_all.sass";
@@ -35,4 +44,4 @@ $input-shadow: none;
 // @import "../node_modules/bulma/sass/components/navbar.sass";
 // @import "../node_modules/bulma/sass/layout/hero.sass";
 // @import "../node_modules/bulma/sass/layout/section.sass";
-@import "../node_modules/bulma/bulma.sass"
+@import "../node_modules/bulma/bulma.sass";

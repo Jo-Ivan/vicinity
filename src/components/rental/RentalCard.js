@@ -10,7 +10,7 @@ const RentalCard = ({ rental }) => {
             <img src={rental.image} alt={rental.title} />
           </figure>
         </div>
-        <div className="card-content rental-card-content">
+        <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="title is-4">{rental.title}</p>
@@ -19,9 +19,8 @@ const RentalCard = ({ rental }) => {
           </div>
           <hr className="rental-card-hr" />
           <div className="content">
-            <p>{rental.city}</p>
-            <p>${rental.dailyPrice} per night · {rental.numOfRooms} room · {rental.category} · {rental.shared ? 'shared' : 'whole'} </p>
-            <p></p>
+            <p>{rental.city} · {rental.shared ? 'shared' : 'whole'} {rental.category} </p>
+            <p>${rental.dailyPrice} per night · {rental.numOfRooms} room </p>
           </div>
         </div>
       </div>

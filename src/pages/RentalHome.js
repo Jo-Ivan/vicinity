@@ -34,20 +34,31 @@ const RentalHome = () => {
     shared: true,
     description: "Very nice apartment in center of the city.",
     dailyPrice: 23
+  },
+  {
+    _id: '4',
+    title: "Cottage with an amazing view",
+    city: "Spain",
+    category: "house",
+    image: "http://via.placeholder.com/350x250",
+    numOfRooms: 3,
+    shared: true,
+    description: "Very quiet.",
+    dailyPrice: 50
   }]);
 
 
   return (
-    <div className="container is-fluid">
-      <h1 className="is-size-2">Book unique homes and experiences.</h1>
-      <div className="columns">
+    <section id="rentals">
+      <h1 className="is-size-2">Book unique homes and experiences today.</h1>
+      <div className="columns is-multiline">
         {
           rentals.map((rental, index) => {
             return <RentalCard rental={rental} key={index} />;
           })
         }
       </div>
-    </div>
+    </section>
   )
 }
 

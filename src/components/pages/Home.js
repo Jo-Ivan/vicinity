@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RentalCard from '../components/rental/RentalCard';
+import RentalCard from '../rental/RentalCard';
 
 const RentalHome = () => {
   const [rentals, setRentals] = useState([{

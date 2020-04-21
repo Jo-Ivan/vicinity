@@ -1,17 +1,17 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ title }) => {
   const [isBurgerActive, setisBurgerActive] = React.useState(false);
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="vicinity-brand navbar-brand">
         <Link className="navbar-item" to="/">
-          <strong className="is-size-4">vicinity</strong>
+          <strong className="is-size-4">{title}</strong>
         </Link>
 
         <button onClick={() => {
@@ -70,6 +70,14 @@ const Header = () => {
 
     </nav >
   )
+}
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
+Header.defaultProps = {
+  title: 'vicinity'
 }
 
 export default Header;

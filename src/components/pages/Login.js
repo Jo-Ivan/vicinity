@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Login = () => {
   return (
@@ -24,9 +24,7 @@ const Login = () => {
       </div>
       <div className="field">
         <p className="control">
-          <button className="button is-primary">
-            Login
-    </button>
+          <button className="button is-primary">Login</button>
         </p>
       </div>
     </div>

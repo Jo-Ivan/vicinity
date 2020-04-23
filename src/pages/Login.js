@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Login = () => {
   return (
@@ -28,7 +28,7 @@ const Login = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
-import Signup from "./components/pages/Signup";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const Routes = () => {
   return (
@@ -14,7 +14,7 @@ const Routes = () => {
         <Route path="/signup" component={Signup} />
       </Switch>
     </div>
-  )
-}
+  );
+};
 
 export default Routes;

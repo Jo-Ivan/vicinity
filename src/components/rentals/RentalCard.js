@@ -1,5 +1,5 @@
-import React from 'react';
-import './RentalCard.scss';
+import React from "react";
+import "./RentalCard.scss";
 
 const RentalCard = ({ rental }) => {
   return (
@@ -19,13 +19,18 @@ const RentalCard = ({ rental }) => {
           </div>
           <hr className="rental-card-hr" />
           <div className="content">
-            <p>{rental.city} · {rental.shared ? 'shared' : 'whole'} {rental.category} </p>
-            <p>${rental.dailyPrice} per night · {rental.numOfRooms} room </p>
+            <p>
+              {rental.city} · {rental.shared ? "shared" : "whole"}{" "}
+              {rental.category}{" "}
+            </p>
+            <p>
+              ${rental.dailyPrice} per night · {rental.numOfRooms} room{" "}
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RentalCard;

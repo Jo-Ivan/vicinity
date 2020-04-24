@@ -19,7 +19,7 @@ const Header = () => {
           }}
           className={`navbar-burger burger ${
             isBurgerActive ? "is-active" : ""
-            }`}
+          }`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-main"
@@ -70,7 +70,7 @@ const Header = () => {
             Host your home
           </Link>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link">Manage</a>
+            <div className="navbar-link">Manage</div>
             <div className="navbar-dropdown">
               <Link className="navbar-item" to="/">
                 About

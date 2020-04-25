@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const Signup = () => {
   return (
-    <div>
+    <Fragment>
       <h1>temp signup page</h1>
-    </div>
+    </Fragment>
   );
 };
 

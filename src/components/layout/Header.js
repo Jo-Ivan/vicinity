@@ -19,7 +19,7 @@ const Header = () => {
           }}
           className={`navbar-burger burger ${
             isBurgerActive ? "is-active" : ""
-          }`}
+            }`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-main"
@@ -66,10 +66,10 @@ const Header = () => {
         </div>
 
         <div className="navbar-end is-size-8">
-          <Link className="navbar-item" to="/">
+          <Link className="navbar-item" to="/host">
             Host your home
           </Link>
-          <div className="navbar-item has-dropdown is-hoverable">
+          {/* <div className="navbar-item has-dropdown is-hoverable">
             <div className="navbar-link">Manage</div>
             <div className="navbar-dropdown">
               <Link className="navbar-item" to="/">
@@ -86,7 +86,7 @@ const Header = () => {
                 Report an issue
               </Link>
             </div>
-          </div>
+          </div> */}
 
           <div className="vicinity-navbar-end navbar-item">
             <div className="buttons">

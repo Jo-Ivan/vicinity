@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const Login = () => {
   return (
-    <div>
+    <Fragment>
+      <h1 className="has-text-primary has-text-centered is-size-2">Log in</h1>
       <div className="field">
         <p className="control has-icons-left has-icons-right">
           <input className="input" type="email" placeholder="Email" />
@@ -27,7 +28,7 @@ const Login = () => {
           <button className="button is-primary">Login</button>
         </p>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

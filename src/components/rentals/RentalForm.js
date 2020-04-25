@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { addRental } from "../../actions/rentalActions";
+import { createRental } from "../../actions/rentalActions";
 
-const RentalForm = ({ addRental }) => {
+const RentalForm = ({ createRental }) => {
   const [rentalTitle, setRentalTitle] = useState("");
   const [rentalCity, setRentalCity] = useState("");
   const [rentalCategory, setRentalCategory] = useState("");
@@ -29,7 +29,7 @@ const RentalForm = ({ addRental }) => {
         description: rentalDescription,
         dailyPrice: rentalPrice,
       };
-      addRental(newRental);
+      createRental(newRental);
     }
   };
 
@@ -161,4 +161,4 @@ RentalForm.propTypes = {
   addRental: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addRental })(RentalForm);
+export default connect(null, { createRental })(RentalForm);

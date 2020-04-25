@@ -10,7 +10,8 @@ $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
 // Update Bulma's global variables
-$family-sans-serif: "Montserrat", sans-serif;
+$family-sans-serif: "Montserrat",
+sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $red;
@@ -33,14 +34,5 @@ body {
   padding-top: 20px;
 }
 
-// Import only what you need from Bulma
-// @import "../node_modules/bulma/sass/utilities/_all.sass";
-// @import "../node_modules/bulma/sass/base/_all.sass";
-// @import "../node_modules/bulma/sass/elements/button.sass";
-// @import "../node_modules/bulma/sass/elements/container.sass";
-// @import "../node_modules/bulma/sass/elements/form.sass";
-// @import "../node_modules/bulma/sass/elements/title.sass";
-// @import "../node_modules/bulma/sass/components/navbar.sass";
-// @import "../node_modules/bulma/sass/layout/hero.sass";
-// @import "../node_modules/bulma/sass/layout/section.sass";
+// Import Bulma
 @import "../node_modules/bulma/bulma.sass";

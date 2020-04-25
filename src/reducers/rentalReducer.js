@@ -1,7 +1,7 @@
 import {
   SET_LOADING,
   GET_RENTALS,
-  ADD_RENTAL,
+  CREATE_RENTAL,
   RENTALS_ERROR,
 } from "../actions/types";
 
@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
         rentals: action.payload,
         loading: false,
       };
-    case ADD_RENTAL:
+    case CREATE_RENTAL:
       return {
         ...state,
         rentals: [...state.rentals, action.payload],

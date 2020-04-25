@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_RENTALS, ADD_RENTAL, RENTALS_ERROR } from "./types";
+import { SET_LOADING, GET_RENTALS, CREATE_RENTAL, RENTALS_ERROR } from "./types";
 
 export const getRentals = () => async (dispatch) => {
   try {
@@ -19,7 +19,7 @@ export const getRentals = () => async (dispatch) => {
   }
 };
 
-export const addRental = (rental) => async (dispatch) => {
+export const createRental = (rental) => async (dispatch) => {
   try {
     setLoading();
 
@@ -34,7 +34,7 @@ export const addRental = (rental) => async (dispatch) => {
     const data = await res.json();
 
     dispatch({
-      type: ADD_RENTAL,
+      type: CREATE_RENTAL,
       payload: data,
     });
   } catch (err) {

@@ -23,10 +23,10 @@ const Rentals = ({ rental: { rentals, loading }, getRentals }) => {
             No rentals to show.
           </h1>
         ) : (
-          rentals.map((rental) => (
-            <RentalCard rental={rental} key={rental.id} />
-          ))
-        )}
+            rentals.map((rental) => (
+              <RentalCard rental={rental} key={rental._id} />
+            ))
+          )}
       </div>
     </section>
   );

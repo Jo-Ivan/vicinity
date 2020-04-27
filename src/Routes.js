@@ -2,10 +2,10 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import RentalDetail from './pages/RentalDetail';
-import Host from './pages/Host';
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import RentalDetail from './components/RentalDetail';
+import Host from './components/pages/Host';
 
 const Routes = () => {
   return (

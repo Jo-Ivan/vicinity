@@ -1,8 +1,26 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import Preloader from "../components/layout/Preloader";
+import { getRental } from "../actions/rentalActions";
+
 import "./RentalDetail.scss";
 
-const RentalDetail = () => {
+const RentalDetail = ({ rental: { loading }, getRental }) => {
+  let { id } = useParams();
+
+  console.log(id);
+
+  useEffect(() => {
+    getRental(id);
+  }, [getRental, id]);
+
+  if (loading || id === null) {
+    return <Preloader />;
+  }
+
   return (
     <section id="rental-details">
       <div className="upper-section">
@@ -83,4 +101,13 @@ const RentalDetail = () => {
   );
 };
 
-export default withRouter(RentalDetail);
+RentalDetail.propTypes = {
+  rental: PropTypes.object.isRequired,
+  getRental: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  rental: state.rental,
+});
+
+export default connect(mapStateToProps, { getRental })(RentalDetail);

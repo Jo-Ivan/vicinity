@@ -1,12 +1,14 @@
 import {
   SET_LOADING,
   GET_RENTALS,
+  GET_RENTAL,
   CREATE_RENTAL,
   RENTALS_ERROR,
 } from "../actions/types";
 
 const initialState = {
   rentals: null,
+  rental: null,
   loading: false,
   error: null,
 };
@@ -24,6 +26,12 @@ export default (state = initialState, action) => {
         rentals: action.payload,
         loading: false,
       };
+    case GET_RENTAL:
+      return {
+        ...state,
+        rental: state.rentals.filter(rental => rental.id === action.payload),
+        loading: false
+      }
     case CREATE_RENTAL:
       return {
         ...state,

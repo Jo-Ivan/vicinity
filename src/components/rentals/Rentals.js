@@ -24,7 +24,7 @@ const Rentals = ({ rental: { rentals, loading }, getRentals }) => {
           </h1>
         ) : (
             rentals.map((rental) => (
-              <RentalCard rental={rental} key={rental._id} />
+              <RentalCard rental={rental} key={rental.id} />
             ))
           )}
       </div>

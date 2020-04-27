@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import RentalForm from "../components/rentals/RentalForm";
+import RentalForm from "../rentals/RentalForm";
 
 const Host = () => {
   return (

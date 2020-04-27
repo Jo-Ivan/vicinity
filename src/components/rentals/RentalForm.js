@@ -5,29 +5,45 @@ import PropTypes from "prop-types";
 import { createRental } from "../../actions/rentalActions";
 
 const RentalForm = ({ createRental }) => {
-  const [rentalTitle, setRentalTitle] = useState("");
-  const [rentalCity, setRentalCity] = useState("");
-  const [rentalCategory, setRentalCategory] = useState("");
-  const [rentalImage, setRentalImage] = useState("");
-  const [rentalNumberOfRooms, setRentalNumberOfRooms] = useState(0);
-  const [rentalDescription, setRentalDescription] = useState("");
-  // const [rentalShared, setRentalShared] = useState(true);
-  const [rentalPrice, setRentalPrice] = useState(0);
+  const [formData, setFormData] = useState({
+    title: "",
+    city: "",
+    category: "",
+    image: "",
+    numberOfRooms: "",
+    description: "",
+    shared: "",
+    price: "",
+  });
+
+  const {
+    title,
+    city,
+    category,
+    image,
+    numberOfRooms,
+    description,
+    shared,
+    price,
+  } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (rentalTitle === "" || rentalCity === "") {
+    if (title === "" || city === "") {
       console.log("empty");
     } else {
       const newRental = {
-        title: rentalTitle,
-        city: rentalCity,
-        category: rentalCategory,
-        image: rentalImage,
-        numOfRooms: rentalNumberOfRooms,
-        // shared: rentalShared,
-        description: rentalDescription,
-        dailyPrice: rentalPrice,
+        title,
+        city,
+        category,
+        image,
+        numberOfRooms,
+        description,
+        shared,
+        price,
       };
       createRental(newRental);
     }
@@ -42,7 +58,8 @@ const RentalForm = ({ createRental }) => {
             className="input"
             type="text"
             placeholder="Title input"
-            onChange={(e) => setRentalTitle(e.target.value)}
+            name="title"
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -55,7 +72,8 @@ const RentalForm = ({ createRental }) => {
             className="input"
             type="text"
             placeholder="City input"
-            onChange={(e) => setRentalCity(e.target.value)}
+            name="city"
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -66,10 +84,10 @@ const RentalForm = ({ createRental }) => {
         <div className="control">
           <div className="select">
             <select
-              name="rentalCategory"
-              value={rentalCategory}
+              name="category"
+              value={category}
               className="browser-default"
-              onChange={(e) => setRentalCategory(e.target.value)}
+              onChange={(e) => onChange(e)}
               required
             >
               <option value="" disabled>
@@ -90,7 +108,8 @@ const RentalForm = ({ createRental }) => {
             className="input"
             type="url"
             placeholder="Image URL"
-            onChange={(e) => setRentalImage(e.target.value)}
+            name="image"
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -103,7 +122,8 @@ const RentalForm = ({ createRental }) => {
             className="input"
             type="number"
             placeholder="Number of rooms"
-            onChange={(e) => setRentalNumberOfRooms(e.target.value)}
+            name="numberOfRooms"
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -115,23 +135,33 @@ const RentalForm = ({ createRental }) => {
           <textarea
             className="textarea"
             placeholder="Description"
-            onChange={(e) => setRentalDescription(e.target.value)}
+            name="description"
+            onChange={(e) => onChange(e)}
             required
           ></textarea>
         </div>
       </div>
 
-      {/* <div className="field">
+      <div className="field">
         <label className="label">Shared</label>
         <div className="control">
-          <label className="radio">
-            <input type="radio" name="yes" /> Yes
-          </label>
-          <label className="radio">
-            <input type="radio" name="no" /> No
-          </label>
+          <div className="select">
+            <select
+              name="shared"
+              value={shared}
+              className="browser-default"
+              onChange={(e) => onChange(e)}
+              required
+            >
+              <option value="" disabled>
+                Select category
+              </option>
+              <option value="yes">yes</option>
+              <option value="no">no</option>
+            </select>
+          </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="field">
         <label className="label">Price</label>
@@ -140,7 +170,8 @@ const RentalForm = ({ createRental }) => {
             className="input"
             type="number"
             placeholder="Price"
-            onChange={(e) => setRentalPrice(e.target.value)}
+            name="price"
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -158,7 +189,7 @@ const RentalForm = ({ createRental }) => {
 };
 
 RentalForm.propTypes = {
-  addRental: PropTypes.func.isRequired,
+  createRental: PropTypes.func.isRequired,
 };
 
 export default connect(null, { createRental })(RentalForm);

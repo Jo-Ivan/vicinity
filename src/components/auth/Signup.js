@@ -1,10 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
+
+import Page from "../layout/Page";
 
 const Signup = () => {
   return (
-    <Fragment>
+    <Page title="Sign up">
       <h1>temp signup page</h1>
-    </Fragment>
+    </Page>
   );
 };
 

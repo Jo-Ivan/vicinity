@@ -15,21 +15,7 @@ const Rentals = ({ rental: { rentals, loading }, getRentals }) => {
     return <Preloader />;
   }
 
-  return (
-    <section id="rentals">
-      <div className="columns is-multiline">
-        {!loading && rentals.length === 0 ? (
-          <h1 className="has-text-primary has-text-centered is-size-2">
-            No rentals to show.
-          </h1>
-        ) : (
-            rentals.map((rental) => (
-              <RentalCard rental={rental} key={rental.id} />
-            ))
-          )}
-      </div>
-    </section>
-  );
+  return <div className="columns is-multiline">{!loading && rentals.length === 0 ? <h1 className="has-text-primary has-text-centered is-size-2">No rentals to show.</h1> : rentals.map((rental) => <RentalCard rental={rental} key={rental.id} />)}</div>;
 };
 
 Rentals.propType = {

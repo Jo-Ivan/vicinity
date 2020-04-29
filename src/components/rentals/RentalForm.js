@@ -16,19 +16,9 @@ const RentalForm = ({ createRental }) => {
     price: "",
   });
 
-  const {
-    title,
-    city,
-    category,
-    image,
-    numberOfRooms,
-    description,
-    shared,
-    price,
-  } = formData;
+  const { title, city, category, image, numberOfRooms, description, shared, price } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -54,28 +44,14 @@ const RentalForm = ({ createRental }) => {
       <div className="field">
         <label className="label">Title</label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Title input"
-            name="title"
-            onChange={(e) => onChange(e)}
-            required
-          />
+          <input className="input" type="text" placeholder="Title input" name="title" onChange={(e) => onChange(e)} required />
         </div>
       </div>
 
       <div className="field">
         <label className="label">City</label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="City input"
-            name="city"
-            onChange={(e) => onChange(e)}
-            required
-          />
+          <input className="input" type="text" placeholder="City input" name="city" onChange={(e) => onChange(e)} required />
         </div>
       </div>
 
@@ -83,13 +59,7 @@ const RentalForm = ({ createRental }) => {
         <label className="label">Category</label>
         <div className="control">
           <div className="select">
-            <select
-              name="category"
-              value={category}
-              className="browser-default"
-              onChange={(e) => onChange(e)}
-              required
-            >
+            <select name="category" value={category} className="browser-default" onChange={(e) => onChange(e)} required>
               <option value="" disabled>
                 Select category
               </option>
@@ -104,41 +74,21 @@ const RentalForm = ({ createRental }) => {
       <div className="field">
         <label className="label">Image URL</label>
         <div className="control">
-          <input
-            className="input"
-            type="url"
-            placeholder="Image URL"
-            name="image"
-            onChange={(e) => onChange(e)}
-            required
-          />
+          <input className="input" type="url" placeholder="Image URL" name="image" onChange={(e) => onChange(e)} required />
         </div>
       </div>
 
       <div className="field">
         <label className="label">Number of rooms</label>
         <div className="control">
-          <input
-            className="input"
-            type="number"
-            placeholder="Number of rooms"
-            name="numberOfRooms"
-            onChange={(e) => onChange(e)}
-            required
-          />
+          <input className="input" type="number" placeholder="Number of rooms" name="numberOfRooms" onChange={(e) => onChange(e)} required />
         </div>
       </div>
 
       <div className="field">
         <label className="label">Description</label>
         <div className="control">
-          <textarea
-            className="textarea"
-            placeholder="Description"
-            name="description"
-            onChange={(e) => onChange(e)}
-            required
-          ></textarea>
+          <textarea className="textarea" placeholder="Description" name="description" onChange={(e) => onChange(e)} required></textarea>
         </div>
       </div>
 
@@ -146,13 +96,7 @@ const RentalForm = ({ createRental }) => {
         <label className="label">Shared</label>
         <div className="control">
           <div className="select">
-            <select
-              name="shared"
-              value={shared}
-              className="browser-default"
-              onChange={(e) => onChange(e)}
-              required
-            >
+            <select name="shared" value={shared} className="browser-default" onChange={(e) => onChange(e)} required>
               <option value="" disabled>
                 Select category
               </option>
@@ -166,14 +110,7 @@ const RentalForm = ({ createRental }) => {
       <div className="field">
         <label className="label">Price</label>
         <div className="control">
-          <input
-            className="input"
-            type="number"
-            placeholder="Price"
-            name="price"
-            onChange={(e) => onChange(e)}
-            required
-          />
+          <input className="input" type="number" placeholder="Price" name="price" onChange={(e) => onChange(e)} required />
         </div>
       </div>
 

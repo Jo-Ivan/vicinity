@@ -1,14 +1,14 @@
-import React, { Fragment } from "react";
+import React from "react";
 import RentalForm from "../rentals/RentalForm";
+
+import Page from "../layout/Page";
 
 const Host = () => {
   return (
-    <Fragment>
-      <h1 className="has-text-primary has-text-centered is-size-2">
-        Earn money as a vicinity host
-      </h1>
+    <Page title="Host">
+      <h1 className="has-text-primary has-text-centered is-size-2">Earn money as a vicinity host</h1>
       <RentalForm />
-    </Fragment>
+    </Page>
   );
 };
 

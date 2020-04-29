@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Preloader from "../components/layout/Preloader";
-import { getRental } from "../actions/rentalActions";
+import Preloader from "../layout/Preloader";
+import { getRental } from "../../actions/rentalActions";
 
 import "./RentalDetail.scss";
 
@@ -43,9 +43,7 @@ const RentalDetail = ({ rental: { loading }, getRental }) => {
               {/* <!-- TODO: Display shared category --> */}
               <h2 className="rental-type">true house</h2>
               {/* <!-- TODO: Display title --> */}
-              <h1 className="rental-title is-size-3 has-text-weight-semibold">
-                Some Title
-              </h1>
+              <h1 className="rental-title is-size-3 has-text-weight-semibold">Some Title</h1>
               {/* <!-- TODO: Display city --> */}
               <h2 className="rental-city">New York</h2>
               <div className="rental-room-info">

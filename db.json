@@ -1,5 +1,6 @@
 {
-  "rentals": [{
+  "rentals": [
+    {
       "id": "1",
       "title": "Nice view on ocean",
       "city": "San Francisco",

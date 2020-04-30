@@ -1,20 +1,16 @@
-import {
-  SET_LOADING,
-  GET_RENTALS,
-  GET_RENTAL,
-  CREATE_RENTAL,
-  RENTALS_ERROR,
-} from "../actions/types";
+import { SET_LOADING, GET_RENTALS, GET_RENTAL, CREATE_RENTAL, RENTALS_ERROR } from "../actions/types";
 
 const initialState = {
-  rentals: null,
-  rental: null,
+  rental: {},
+  rentals: [],
   loading: false,
-  error: null,
+  error: {},
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case SET_LOADING:
       return {
         ...state,
@@ -23,26 +19,25 @@ export default (state = initialState, action) => {
     case GET_RENTALS:
       return {
         ...state,
-        rentals: action.payload,
+        rentals: payload,
         loading: false,
       };
     case GET_RENTAL:
       return {
         ...state,
-        rental: state.rentals.filter(rental => rental.id === action.payload),
-        loading: false
-      }
+        rental: payload,
+        loading: false,
+      };
     case CREATE_RENTAL:
       return {
         ...state,
-        rentals: [...state.rentals, action.payload],
+        rentals: [...state.rentals, payload],
         loading: false,
       };
     case RENTALS_ERROR:
-      console.error(action.payload);
       return {
         ...state,
-        error: action.payload,
+        error: payload,
         loading: false,
       };
     default:

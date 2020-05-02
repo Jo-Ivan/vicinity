@@ -17,7 +17,7 @@ const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
 
   useEffect(() => {
     getRental(id);
-  }, []);
+  }, [getRental, id]);
 
   if (loading) {
     return <Preloader />;

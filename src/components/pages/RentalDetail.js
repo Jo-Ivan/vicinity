@@ -2,34 +2,37 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Preloader from "../layout/Preloader";
 import Page from "../layout/Page";
 import { getRental } from "../../actions/rentalActions";
+import { capitalize } from "../../helpers/functions";
 
 import "./RentalDetail.scss";
 
 const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
   let { id } = useParams();
+  const { title, image, shared, category, city, numOfRooms, description } = rental;
 
   useEffect(() => {
     getRental(id);
   }, []);
 
-  if (loading || rental.id === null) {
+  if (loading) {
     return <Preloader />;
   }
 
   return (
-    <Page title="Detail">
+    <Page title={title}>
       <section id="rental-details">
         <div className="upper-section">
           <div className="columns">
             <div className="column">
-              <img src={rental.image} alt="" />
+              <img src={image} alt="" />
             </div>
             <div className="column">
-              <img src={rental.image} alt="" />
+              <img src={image} alt="" />
             </div>
           </div>
         </div>
@@ -39,47 +42,47 @@ const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
             <div className="column is-8">
               <div className="rental">
                 <h2 className="rental-type">
-                  {rental.shared ? "shared" : "single"} {rental.category}
+                  {shared ? "shared" : "single"} {category}
                 </h2>
-                <h1 className="rental-title is-size-3 has-text-weight-semibold">{rental.title}</h1>
-                <h2 className="rental-city">{rental.city}</h2>
+                <h1 className="rental-title is-size-3 has-text-weight-semibold">{title}</h1>
+                <h2 className="rental-city">{capitalize(city)}</h2>
                 <div className="rental-room-info">
                   <span>
-                    <i className="fa fa-building"></i>
-                    {rental.numOfRooms} bedrooms
+                    <FontAwesomeIcon icon="building" />
+                    {numOfRooms} bedrooms
                   </span>
                   <span>
-                    <i className="fa fa-user"></i> {rental.numOfRooms + 4} guests
+                    <FontAwesomeIcon icon="user" /> {numOfRooms + 4} guests
                   </span>
                   <span>
-                    <i className="fa fa-bed"></i> {rental.numOfRooms + 2} beds
+                    <FontAwesomeIcon icon="bed" /> {numOfRooms + 2} beds
                   </span>
                 </div>
-                <p className="rental-description">{rental.description}</p>
+                <p className="rental-description">{description}</p>
                 <hr />
                 <div className="rental-assets">
                   <h3 className="is-size-3 has-text-weight-semibold">Assets</h3>
                   <div className="columns">
                     <div className="column is-6">
                       <span>
-                        <i className="fa fa-asterisk"></i> Cooling
+                        <FontAwesomeIcon icon="asterisk" /> Cooling
                       </span>
                       <span>
-                        <i className="fa fa-thermometer"></i> Heating
+                        <FontAwesomeIcon icon="thermometer" /> Heating
                       </span>
                       <span>
-                        <i className="fa fa-location-arrow"></i> Iron
+                        <FontAwesomeIcon icon="location-arrow" /> Iron
                       </span>
                     </div>
                     <div className="column is-6">
                       <span>
-                        <i className="fa fa-desktop"></i> Working area
+                        <FontAwesomeIcon icon="desktop" /> Working area
                       </span>
                       <span>
-                        <i className="fa fa-cube"></i> Washing machine
+                        <FontAwesomeIcon icon="cube" /> Washing machine
                       </span>
                       <span>
-                        <i className="fa fa-cube"></i> Dishwasher
+                        <FontAwesomeIcon icon="cube" /> Dishwasher
                       </span>
                     </div>
                   </div>
@@ -96,11 +99,11 @@ const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
 
 RentalDetail.propTypes = {
   rental: PropTypes.object.isRequired,
-  getRental: PropTypes.func.isRequired,
+  getRental: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  rental: state.rental,
+  rental: state.rental
 });
 
 export default connect(mapStateToProps, { getRental })(RentalDetail);

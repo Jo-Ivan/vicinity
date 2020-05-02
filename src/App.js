@@ -4,9 +4,14 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Header from "./components/layout/Header";
-import Routes from "./Routes";
+import Routes from "./components/routing/Routes";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.scss";
+
+library.add(fas);
 
 function App() {
   return (

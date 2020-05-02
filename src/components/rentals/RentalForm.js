@@ -14,7 +14,7 @@ const RentalForm = ({ createRental }) => {
     numberOfRooms: null,
     description: "",
     shared: "",
-    price: null,
+    price: null
   });
 
   const { title, city, category, image, numberOfRooms, description, shared, price } = formData;
@@ -36,7 +36,7 @@ const RentalForm = ({ createRental }) => {
         numOfRooms: parseInt(numberOfRooms),
         description,
         shared,
-        dailyPrice: parseInt(price),
+        dailyPrice: parseInt(price)
       };
       createRental(newRental);
       setToHome(true);
@@ -133,7 +133,7 @@ const RentalForm = ({ createRental }) => {
 };
 
 RentalForm.propTypes = {
-  createRental: PropTypes.func.isRequired,
+  createRental: PropTypes.func.isRequired
 };
 
 export default connect(null, { createRental })(RentalForm);

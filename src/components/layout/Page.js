@@ -5,7 +5,7 @@ const Page = (props) => {
   useEffect(() => {
     document.title = `${props.title} · vicinity`;
     window.scrollTo(0, 0);
-  }, []);
+  }, [props.title]);
 
   return <Container fluid={props.fluid}>{props.children}</Container>;
 };

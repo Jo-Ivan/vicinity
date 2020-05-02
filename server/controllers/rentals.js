@@ -29,14 +29,14 @@ exports.createRental = (req, res) => {
   const rentalData = req.body;
   rentals.push(rentalData);
 
-  return res.json({ message: `Rental with id: ${rentalData} was added` });
+  return res.json({ message: `Rental with id: ${rentalData._id} was added` });
 };
 exports.deleteRental = (req, res) => {
   const { id } = req.params;
   const indexOfRental = rentals.findIndex((rental) => id === rental._id);
   rentals.splice(indexOfRental, 1);
 
-  return res.json({ message: `Rental with id: ${rentalData} was deleted` });
+  return res.json({ message: `Rental with id: ${rentalData._id} was deleted` });
 };
 exports.updateRental = (req, res) => {
   const { id } = req.params;

@@ -9,7 +9,10 @@ connectDB();
 app.use(express.json());
 
 // Api Routes
-app.use("/api/v1/rentals", require("./routes/api/rentals"));
+app.use("/api/v1", require("./routes/api/rentals"));
+
+// Models
+const Rental = require("./models/Rental");
 
 const PORT = process.env.PORT || 3001;
 

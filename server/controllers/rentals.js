@@ -22,6 +22,7 @@ exports.getRentals = (req, res) => {
 exports.getRentalById = (req, res) => {
   const { id } = req.params;
   const rental = rentals.find((rental) => rental._id === id);
+
   return res.json(rental);
 };
 exports.createRental = (req, res) => {

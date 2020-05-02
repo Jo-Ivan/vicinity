@@ -1,0 +1,29 @@
+{
+  "name": "vicinity",
+  "version": "1.0.0",
+  "description": "An Airbnb type website built on the MERN stack.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jo-Ivan/vicinity.git"
+  },
+  "keywords": [],
+  "author": "Jo-Ivan Melgarejo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jo-Ivan/vicinity/issues"
+  },
+  "homepage": "https://github.com/Jo-Ivan/vicinity#readme",
+  "dependencies": {
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

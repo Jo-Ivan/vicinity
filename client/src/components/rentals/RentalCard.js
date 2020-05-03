@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { capitalize } from "../../helpers/functions";
+
 import "./RentalCard.scss";
 
 const RentalCard = ({ rental }) => {
   return (
     <div className="column is-3">
-      <Link to={`/rentals/${rental.id}`}>
+      <Link to={`/rentals/${rental._id}`}>
         <div className="card">
           <div className="card-image">
             <figure className="image is-4by3">
@@ -22,8 +24,7 @@ const RentalCard = ({ rental }) => {
             <hr className="rental-card-hr" />
             <div className="content">
               <p>
-                {rental.city} · {rental.shared ? "shared" : "whole"}{" "}
-                {rental.category}{" "}
+                {capitalize(rental.city)} · {rental.shared ? "shared" : "whole"} {rental.category}{" "}
               </p>
               <p>
                 ${rental.dailyPrice} per night · {rental.numOfRooms} room{" "}

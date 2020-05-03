@@ -1,25 +1,23 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Preloader from "../layout/Preloader";
 import Page from "../layout/Page";
-import { getRental } from "../../actions/rentalActions";
+import { getRentalById } from "../../actions/rentalActions";
 import { capitalize } from "../../helpers/functions";
 
 import "./RentalDetail.scss";
 
-const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
-  let { id } = useParams();
+const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => {
   const { title, image, shared, category, city, numOfRooms, description } = rental;
 
   useEffect(() => {
-    getRental(id);
-  }, [getRental, id]);
+    getRentalById(match.params.id);
+  }, [getRentalById, match.params.id]);
 
-  if (loading) {
+  if (rental === null || loading) {
     return <Preloader />;
   }
 
@@ -99,11 +97,11 @@ const RentalDetail = ({ rental: { rental, loading }, getRental }) => {
 
 RentalDetail.propTypes = {
   rental: PropTypes.object.isRequired,
-  getRental: PropTypes.func.isRequired
+  getRentalById: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   rental: state.rental
 });
 
-export default connect(mapStateToProps, { getRental })(RentalDetail);
+export default connect(mapStateToProps, { getRentalById })(RentalDetail);

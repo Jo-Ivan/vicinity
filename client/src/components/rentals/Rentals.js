@@ -15,16 +15,16 @@ const Rentals = ({ rental: { rentals, loading }, getRentals }) => {
     return <Preloader />;
   }
 
-  return <div className="columns is-multiline">{!loading && rentals.length === 0 ? <h1 className="has-text-primary has-text-centered is-size-2">No rentals to show.</h1> : rentals.map((rental) => <RentalCard rental={rental} key={rental.id} />)}</div>;
+  return <div className="columns is-multiline">{!loading && rentals.length === 0 ? <h1 className="has-text-primary has-text-centered is-size-2">No rentals to show.</h1> : rentals.map((rental) => <RentalCard rental={rental} key={rental._id} />)}</div>;
 };
 
 Rentals.propType = {
   rental: PropTypes.object.isRequired,
-  getRentals: PropTypes.func.isRequired,
+  getRentals: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  rental: state.rental,
+  rental: state.rental
 });
 
 export default connect(mapStateToProps, { getRentals })(Rentals);

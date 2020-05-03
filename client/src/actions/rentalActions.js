@@ -1,71 +1,56 @@
-import { SET_LOADING, GET_RENTALS, GET_RENTAL, CREATE_RENTAL, RENTALS_ERROR } from './types';
+import axios from "axios";
+import { GET_RENTALS, GET_RENTAL, CREATE_RENTAL, RENTALS_ERROR } from "./types";
 
 export const getRentals = () => async (dispatch) => {
-	try {
-		setLoading();
+  try {
+    const res = await axios.get("/rentals");
 
-		const res = await fetch('/rentals');
-		const data = await res.json();
-
-		dispatch({
-			type: GET_RENTALS,
-			payload: data
-		});
-	} catch (err) {
-		dispatch({
-			type: RENTALS_ERROR,
-			payload: err.response.statusText
-		});
-	}
+    dispatch({
+      type: GET_RENTALS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: RENTALS_ERROR,
+      payload: err.response
+    });
+  }
 };
 
-export const getRental = (id) => async (dispatch) => {
-	try {
-		setLoading();
+export const getRentalById = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/rentals/${id}`);
 
-		const res = await fetch(`/rentals/${id}`);
-		const data = await res.json();
-
-		dispatch({
-			type: GET_RENTAL,
-			payload: data
-		});
-	} catch (err) {
-		dispatch({
-			type: RENTALS_ERROR,
-			payload: err.response.statusText
-		});
-	}
+    dispatch({
+      type: GET_RENTAL,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: RENTALS_ERROR,
+      payload: err.response.statusText
+    });
+  }
 };
 
 export const createRental = (rental) => async (dispatch) => {
-	try {
-		setLoading();
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
 
-		const res = await fetch('/rentals', {
-			method: 'POST',
-			body: JSON.stringify(rental),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+    const res = await axios.post("/rentals", rental, config);
 
-		const data = await res.json();
-
-		dispatch({
-			type: CREATE_RENTAL,
-			payload: data
-		});
-	} catch (err) {
-		dispatch({
-			type: RENTALS_ERROR,
-			payload: err.response.statusText
-		});
-	}
-};
-
-export const setLoading = () => {
-	return {
-		type: SET_LOADING
-	};
+    dispatch({
+      type: CREATE_RENTAL,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: RENTALS_ERROR,
+      payload: err.response.statusText
+    });
+  }
 };

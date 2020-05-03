@@ -4,6 +4,7 @@
 .pnp.js
 config/default.json
 config/production.json
+/tempDB
 
 # testing
 /coverage

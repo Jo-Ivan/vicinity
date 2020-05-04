@@ -1,9 +1,17 @@
 import axios from "axios";
-import { GET_RENTALS, GET_RENTAL, CREATE_RENTAL, RENTALS_ERROR } from "./types";
+import { GET_RENTALS, GET_RENTAL, CREATE_RENTAL, RENTALS_ERROR, RESET_RENTAL, SET_LOADING } from "./types";
 
 export const getRentals = () => async (dispatch) => {
   try {
+    dispatch({
+      type: SET_LOADING
+    });
+
     const res = await axios.get("/rentals");
+
+    dispatch({
+      type: RESET_RENTAL
+    });
 
     dispatch({
       type: GET_RENTALS,
@@ -12,13 +20,17 @@ export const getRentals = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: RENTALS_ERROR,
-      payload: err.response
+      payload: err.response.statusText
     });
   }
 };
 
 export const getRentalById = (id) => async (dispatch) => {
   try {
+    dispatch({
+      type: SET_LOADING
+    });
+
     const res = await axios.get(`/rentals/${id}`);
 
     dispatch({

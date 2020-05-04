@@ -24,7 +24,7 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
   }
 
   return (
-    <Page title={title}>
+    <Page title={!title ? "..." : title}>
       <section id="rental-details">
         <div className="upper-section">
           <div className="columns">

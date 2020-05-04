@@ -8,6 +8,8 @@ import Page from "../layout/Page";
 import { getRentalById } from "../../actions/rentalActions";
 import { capitalize } from "../../helpers/functions";
 
+import RentalAmenities from "./RentalAmenities";
+
 import "./RentalDetail.scss";
 
 const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => {
@@ -61,28 +63,7 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
                 <div className="rental-assets">
                   <h3 className="is-size-3 has-text-weight-semibold">Assets</h3>
                   <div className="columns">
-                    <div className="column is-6">
-                      <span>
-                        <FontAwesomeIcon icon="asterisk" /> Cooling
-                      </span>
-                      <span>
-                        <FontAwesomeIcon icon="thermometer" /> Heating
-                      </span>
-                      <span>
-                        <FontAwesomeIcon icon="location-arrow" /> Iron
-                      </span>
-                    </div>
-                    <div className="column is-6">
-                      <span>
-                        <FontAwesomeIcon icon="desktop" /> Working area
-                      </span>
-                      <span>
-                        <FontAwesomeIcon icon="cube" /> Washing machine
-                      </span>
-                      <span>
-                        <FontAwesomeIcon icon="cube" /> Dishwasher
-                      </span>
-                    </div>
+                    <RentalAmenities />
                   </div>
                 </div>
               </div>

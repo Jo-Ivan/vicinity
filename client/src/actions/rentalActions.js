@@ -10,12 +10,11 @@ export const getRentals = () => async (dispatch) => {
     const res = await axios.get("/rentals");
 
     dispatch({
-      type: RESET_RENTAL
-    });
-
-    dispatch({
       type: GET_RENTALS,
       payload: res.data
+    });
+    dispatch({
+      type: RESET_RENTAL
     });
   } catch (err) {
     dispatch({

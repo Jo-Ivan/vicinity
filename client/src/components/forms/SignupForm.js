@@ -64,12 +64,12 @@ const SignupForm = () => {
           <div className="field">
             <label className="label">Confirm Password</label>
             <div className="control has-icons-right">
-              <input className="input" type="password" name="confirmPassword" ref={register({ required: true, minLength: 8, validate: { compare: compare("password"), getValues } })} />
+              <input className="input" type="password" name="passwordConfirmation" ref={register({ required: true, minLength: 8, validate: { compare: compare("password"), getValues } })} />
               {errors.password && (
                 <span className="help is-danger">
-                  <FontAwesomeIcon icon="exclamation-triangle" /> {errors.confirmPassword.type === "required" && "Password is required."}
-                  {errors.confirmPassword.type === "minLength" && "Password must be at least 8 characters."}
-                  {errors.confirmPassword.type === "isEqual" && "Password doesn't match."}
+                  <FontAwesomeIcon icon="exclamation-triangle" /> {errors.passwordConfirmation.type === "required" && "Password is required."}
+                  {errors.passwordConfirmation.type === "minLength" && "Password must be at least 8 characters."}
+                  {errors.passwordConfirmation.type === "isEqual" && "Password doesn't match."}
                 </span>
               )}
               <span className="icon is-small is-right">

@@ -1,6 +1,6 @@
 const Rental = require("../models/Rental");
 
-// @route GET  /api/v1/rentals
+// @route GET   api/v1/rentals
 // @description Get rentals
 // @access      Public
 exports.getRentals = async (req, res) => {
@@ -13,14 +13,13 @@ exports.getRentals = async (req, res) => {
   }
 };
 
-// @route GET  /api/v1/rentals/:id
+// @route GET   api/v1/rentals/:id
 // @description Get a rental by id
 // @access      Public
 exports.getRentalById = async (req, res) => {
+  const { id } = req.params;
+  if (!id) return res.status(404).json({ msg: "Rental not found" });
   try {
-    const { id } = req.params;
-    if (!id) return res.status(404).json({ msg: "Rental not found" });
-
     const rental = await Rental.findById(id);
 
     return res.json(rental);
@@ -33,12 +32,12 @@ exports.getRentalById = async (req, res) => {
   }
 };
 
-// @route POST  /api/v1/rentals
+// @route POST  api/v1/rentals
 // @description Create a rental
 // @access      Private
 exports.createRental = async (req, res) => {
+  const rentalData = req.body;
   try {
-    const rentalData = req.body;
     const newRental = new Rental(rentalData);
 
     const rental = await newRental.save();
@@ -49,12 +48,12 @@ exports.createRental = async (req, res) => {
   }
 };
 
-// @route DELETE  /api/v1/rentals/:id
+// @route DELETE  api/v1/rentals/:id
 // @description   Delete a rental by id
 // @access        Private
 exports.deleteRentalById = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const rental = await Rental.findById(id);
 
     if (!rental) return res.status(404).json({ msg: "Rental not found" });

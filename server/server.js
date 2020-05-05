@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Api Routes
 app.use("/api/v1", require("./routes/api/rentals"));
+app.use("/api/v1/users", require("./routes/api/users"));
 
 const PORT = process.env.PORT || 3001;
 

@@ -1,5 +1,7 @@
 const User = require("../models/User");
 const { validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const bcrypt = require("bcryptjs");
 
 // @route POST  api/v1/users/login
@@ -28,11 +30,15 @@ exports.login = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id
+        id: user.id,
+        username: user.username
       }
     };
 
-    res.json(user);
+    jwt.sign(payload, config.get("jwtSecret"), { expiresIn: "10h" }, (err, token) => {
+      if (err) throw token;
+      res.json({ token });
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send({ title: "Server error", msg: "Unable to post user data" });
@@ -73,7 +79,17 @@ exports.signup = async (req, res) => {
 
     await user.save();
 
-    res.json(user);
+    const payload = {
+      user: {
+        id: user.id,
+        username: user.username
+      }
+    };
+
+    jwt.sign(payload, config.get("jwtSecret"), { expiresIn: "10h" }, (err, token) => {
+      if (err) throw token;
+      res.json({ token });
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send({ title: "Server error", msg: "Unable to post user data" });

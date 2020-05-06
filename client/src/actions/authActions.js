@@ -16,17 +16,17 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const signup = ({ username, email, password }) => async (dispatch) => {
+export const signup = (username, email, password, passwordConfirmation) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json"
     }
   };
 
-  const body = JSON.stringify({ username, email, password });
+  const body = JSON.stringify({ username, email, password, passwordConfirmation });
 
   try {
-    const res = await axios.post("/api/users", body, config);
+    const res = await axios.post("/users/signup", body, config);
 
     dispatch({
       type: SIGNUP_SUCCESS,

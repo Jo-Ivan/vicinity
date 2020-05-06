@@ -1,14 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 import { compare } from "../../helpers/validators";
 
-const SignupForm = () => {
+import { signup } from "../../actions/authActions";
+
+const SignupForm = ({ signup, isAuthenticated }) => {
   const { register, handleSubmit, errors, getValues } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = ({ username, email, password, passwordConfirmation }) => {
+    signup(username, email, password, passwordConfirmation);
+    console.log("Success");
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="column is-4 ">
@@ -93,4 +103,13 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+SignupForm.propTypes = {
+  signup: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { signup })(SignupForm);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_SUCCESS, LOGIN_FAILURE, SIGNUP_SUCCESS, SIGNUP_FAILURE, USER_LOADED, AUTH_ERROR } from "./types";
+import { LOGIN_SUCCESS, LOGIN_FAILURE, SIGNUP_SUCCESS, SIGNUP_FAILURE, USER_LOADED, AUTH_ERROR, LOGOUT_USER } from "./types";
 
 export const loadUser = () => async (dispatch) => {
   try {
@@ -69,4 +69,10 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_FAILURE
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT_USER
+  });
 };

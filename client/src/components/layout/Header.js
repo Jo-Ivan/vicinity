@@ -1,10 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/authActions";
 
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ logout, auth: { isAuthenticated, loading } }) => {
   const [isBurgerActive, setisBurgerActive] = React.useState(false);
+
+  const authLinks = (
+    <a onClick={logout} className="button is-light" href="#!">
+      Log out
+    </a>
+  );
+
+  const guestLinks = (
+    <>
+      <Link className="button is-primary" to="/signup">
+        Sign up
+      </Link>
+      <Link className="button is-light" to="/login">
+        Log in
+      </Link>
+    </>
+  );
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -72,14 +92,7 @@ const Header = () => {
           </div> */}
 
           <div className="vicinity-navbar-end navbar-item">
-            <div className="buttons">
-              <Link className="button is-primary" to="/signup">
-                Sign up
-              </Link>
-              <Link className="button is-light" to="/login">
-                Log in
-              </Link>
-            </div>
+            <div className="buttons">{isAuthenticated ? authLinks : guestLinks}</div>
           </div>
         </div>
       </div>
@@ -87,4 +100,13 @@ const Header = () => {
   );
 };
 
-export default Header;
+Header.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Header);

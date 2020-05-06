@@ -11,7 +11,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="login column is-4 ">
+    <div className="column is-4 ">
       <section className="section">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="field">

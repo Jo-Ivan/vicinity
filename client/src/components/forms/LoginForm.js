@@ -1,17 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
-
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LoginForm = () => {
+import { login } from "../../actions/authActions";
+
+const LoginForm = ({ login, isAuthenticated }) => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async ({ email, password }) => {
+    login(email, password);
+    console.log("Success");
   };
 
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <div className="login column is-4 ">
+    <div className="column is-4 ">
       <section className="section">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="field">
@@ -59,4 +68,12 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(LoginForm);

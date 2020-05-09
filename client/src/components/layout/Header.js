@@ -6,7 +6,7 @@ import { logout } from "../../actions/authActions";
 
 import "./Header.scss";
 
-const Header = ({ logout, auth: { isAuthenticated, loading } }) => {
+const Header = ({ logout, auth: { isAuthenticated, user, loading } }) => {
   const [isBurgerActive, setisBurgerActive] = React.useState(false);
 
   const authLinks = (
@@ -69,28 +69,30 @@ const Header = ({ logout, auth: { isAuthenticated, loading } }) => {
         </div>
 
         <div className="navbar-end is-size-8">
+          {isAuthenticated && <span className="navbar-item">Welcome {user.username}!</span>}
           <Link className="navbar-item" to="/host">
             Host your home
           </Link>
-          {/* <div className="navbar-item has-dropdown is-hoverable">
-            <div className="navbar-link">Manage</div>
-            <div className="navbar-dropdown">
-              <Link className="navbar-item" to="/">
-                About
-              </Link>
-              <Link className="navbar-item" to="/">
-                Jobs
-              </Link>
-              <Link className="navbar-item" to="/">
-                Contact
-              </Link>
-              <hr className="navbar-divider" />
-              <Link className="navbar-item" to="/">
-                Report an issue
-              </Link>
+          {isAuthenticated && (
+            <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-link">Manage</div>
+              <div className="navbar-dropdown">
+                <Link className="navbar-item" to="/">
+                  About
+                </Link>
+                <Link className="navbar-item" to="/">
+                  Jobs
+                </Link>
+                <Link className="navbar-item" to="/">
+                  Contact
+                </Link>
+                <hr className="navbar-divider" />
+                <Link className="navbar-item" to="/">
+                  Report an issue
+                </Link>
+              </div>
             </div>
-          </div> */}
-
+          )}
           <div className="vicinity-navbar-end navbar-item">
             <div className="buttons">{isAuthenticated ? authLinks : guestLinks}</div>
           </div>

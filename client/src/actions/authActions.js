@@ -34,6 +34,7 @@ export const signup = (username, email, password, passwordConfirmation) => async
       payload: res.data
     });
     dispatch(loadUser());
+    dispatch(setAlert("You have successfully signed up!", "success", 5000));
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -65,6 +66,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     dispatch(loadUser());
+    dispatch(setAlert("You have successfully logged in!", "success", 2000));
   } catch (err) {
     const errors = err.response.data.errors;
 

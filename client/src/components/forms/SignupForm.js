@@ -13,7 +13,6 @@ const SignupForm = ({ signup, isAuthenticated }) => {
 
   const onSubmit = ({ username, email, password, passwordConfirmation }) => {
     signup(username, email, password, passwordConfirmation);
-    console.log("Success");
   };
 
   if (isAuthenticated) {

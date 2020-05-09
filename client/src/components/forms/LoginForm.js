@@ -12,7 +12,6 @@ const LoginForm = ({ login, isAuthenticated }) => {
 
   const onSubmit = async ({ email, password }) => {
     login(email, password);
-    console.log("Success");
   };
 
   if (isAuthenticated) {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alertActions";
 import { LOGIN_SUCCESS, LOGIN_FAILURE, SIGNUP_SUCCESS, SIGNUP_FAILURE, USER_LOADED, AUTH_ERROR, LOGOUT_USER } from "./types";
 
 export const loadUser = () => async (dispatch) => {
@@ -35,7 +36,10 @@ export const signup = (username, email, password, passwordConfirmation) => async
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
-    console.log(errors);
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
 
     dispatch({
       type: SIGNUP_FAILURE
@@ -62,9 +66,12 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
-    // TODO: add alert notifying users that login failed
     const errors = err.response.data.errors;
-    console.log(errors);
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
     dispatch({
       type: LOGIN_FAILURE
     });

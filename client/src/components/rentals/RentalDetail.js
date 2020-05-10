@@ -32,7 +32,7 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
             <div className="column">
               <img src={image} alt="" />
             </div>
-            <div className="column container">
+            <div className="column">
               <Map center={coordinates} zoom={18} />
             </div>
           </div>

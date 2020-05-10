@@ -1,5 +1,11 @@
 .card {
   height: 100%;
+  border-radius: 0.5em;
+
+  img {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
 }
 
 .rental-card-hr {

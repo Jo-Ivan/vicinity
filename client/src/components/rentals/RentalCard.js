@@ -14,6 +14,7 @@ const RentalCard = ({ rental }) => {
               <img src={rental.image} alt={rental.title} />
             </figure>
           </div>
+
           <div className="card-content">
             <div className="media">
               <div className="media-content">

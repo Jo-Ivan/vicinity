@@ -9,11 +9,12 @@ import { getRentalById } from "../../actions/rentalActions";
 import { capitalize } from "../../helpers/functions";
 
 import RentalAmenities from "./RentalAmenities";
+import Map from "../map/Map";
 
 import "./RentalDetail.scss";
 
 const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => {
-  const { title, image, shared, category, city, numOfRooms, description } = rental;
+  const { title, image, shared, category, city, numOfRooms, description, coordinates } = rental;
 
   useEffect(() => {
     getRentalById(match.params.id);
@@ -24,15 +25,15 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
   }
 
   return (
-    <Page title={!title ? "..." : title}>
+    <Page title={!title ? "..." : title} fluid={true}>
       <section id="rental-details">
         <div className="upper-section">
           <div className="columns">
             <div className="column">
               <img src={image} alt="" />
             </div>
-            <div className="column">
-              <img src={image} alt="" />
+            <div className="column container">
+              <Map center={coordinates} zoom={18} />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RentalSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   title: { type: String, required: true, maxlength: [128, "Maximum length is 128 characters"] },
   city: { type: String, required: true, lowercase: true },
   street: { type: String, required: true, minlength: [4, "Minimum length is 4 characters"], lowercase: true },
@@ -16,7 +17,6 @@ const RentalSchema = new Schema({
     }
   },
   shared: { type: Boolean, required: true },
-  user: { type: Schema.Types.ObjectId, ref: "User" },
   description: { type: String, required: true },
   dailyPrice: {
     type: Number,
@@ -26,6 +26,8 @@ const RentalSchema = new Schema({
       message: "{VALUE} is not an integer value"
     }
   },
+  coordinates: { type: Object },
+  formattedAddress: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

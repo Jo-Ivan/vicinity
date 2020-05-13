@@ -1,4 +1,6 @@
 const Rental = require("../models/Rental");
+const User = require("../models/User");
+const { validationResult } = require("express-validator");
 
 // @route GET   api/v1/rentals
 // @description Get rentals
@@ -36,11 +38,32 @@ exports.getRentalById = async (req, res) => {
 // @description Create a rental
 // @access      Private
 exports.createRental = async (req, res) => {
-  const rentalData = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { title, city, street, category, image, numOfRooms, description, shared, dailyPrice } = req.body;
+
   try {
-    const newRental = new Rental(rentalData);
+    const user = await User.findById(req.user.id).select("-password");
+
+    const newRental = new Rental({
+      title,
+      street,
+      city,
+      street,
+      category,
+      image,
+      numOfRooms,
+      description,
+      shared,
+      dailyPrice,
+      user
+    });
 
     const rental = await newRental.save();
+
     res.json(rental);
   } catch (err) {
     console.error(err.message);

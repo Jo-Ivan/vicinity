@@ -18,3 +18,6 @@
 - [ ] on the homepage the hero can have a moving background
 - [ ] call-to-action then footer
 - [ ] 5 star rating system?
+
+### Notes
+Link to geocoder: https://developers.google.com/maps/documentation/geocoding/start

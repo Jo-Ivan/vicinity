@@ -16,6 +16,7 @@ const RentalSchema = new Schema({
     }
   },
   shared: { type: Boolean, required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   description: { type: String, required: true },
   dailyPrice: {
     type: Number,

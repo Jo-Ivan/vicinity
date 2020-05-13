@@ -1,5 +1,5 @@
 import React from "react";
-import RentalForm from "../rentals/RentalForm";
+import RentalForm from "../forms/RentalForm";
 
 import Page from "../layout/Page";
 

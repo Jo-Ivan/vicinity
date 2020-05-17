@@ -54,37 +54,42 @@ exports.createRental = async (req, res) => {
       return res.status(400).json({ msg: "You are not logged in." });
     }
 
-    request(`https://maps.googleapis.com/maps/api/geocode/json?address=${city + " " + street}&key=${config.get("GOOGLE_MAPS_API_KEY")}`, (error, response, body) => {
-      if (error) console.error(error);
+    request(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${city + " " + street}&key=${config.get(
+        "GOOGLE_MAPS_API_KEY"
+      )}`,
+      (error, response, body) => {
+        if (error) console.error(error);
 
-      if (response.statusCode !== 200) {
-        return res.status(404).json({ msg: "Not found" });
+        if (response.statusCode !== 200) {
+          return res.status(404).json({ msg: "Not found" });
+        }
+
+        const mapObject = JSON.parse(body);
+        const results = mapObject.results;
+
+        const coordinates = results[0].geometry.location;
+        const formattedAddress = results[0].formatted_address;
+        const newRental = new Rental({
+          title,
+          street,
+          city,
+          street,
+          category,
+          image,
+          numOfRooms,
+          description,
+          shared,
+          dailyPrice,
+          coordinates,
+          formattedAddress,
+          user
+        });
+
+        newRental.save();
+        res.json({ msg: "Rental created" });
       }
-
-      const mapObject = JSON.parse(body);
-      const results = mapObject.results;
-
-      const coordinates = results[0].geometry.location;
-      const formattedAddress = results[0].formatted_address;
-      const newRental = new Rental({
-        title,
-        street,
-        city,
-        street,
-        category,
-        image,
-        numOfRooms,
-        description,
-        shared,
-        dailyPrice,
-        coordinates,
-        formattedAddress,
-        user
-      });
-
-      newRental.save();
-      res.json({ msg: "Rental created" });
-    });
+    );
   } catch (err) {
     console.error(err.message);
     res.status(500).send({ title: "Server error", msg: "Unable to post rental data" });

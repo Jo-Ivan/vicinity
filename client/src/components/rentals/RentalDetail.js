@@ -49,8 +49,7 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
                 <h2 className="rental-city">{capitalize(city)}</h2>
                 <div className="rental-room-info">
                   <span>
-                    <FontAwesomeIcon icon="building" />
-                    {numOfRooms} bedrooms
+                    <FontAwesomeIcon icon="building" /> {numOfRooms} bedrooms
                   </span>
                   <span>
                     <FontAwesomeIcon icon="user" /> {numOfRooms + 4} guests

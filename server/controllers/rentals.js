@@ -66,7 +66,6 @@ exports.createRental = async (req, res) => {
 
       const coordinates = results[0].geometry.location;
       const formattedAddress = results[0].formatted_address;
-      console.log(coordinates);
       const newRental = new Rental({
         title,
         street,

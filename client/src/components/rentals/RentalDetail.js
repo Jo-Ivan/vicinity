@@ -9,6 +9,7 @@ import { getRentalById } from "../../actions/rentalActions";
 import { capitalize } from "../../helpers/functions";
 
 import RentalAmenities from "./RentalAmenities";
+import BookingReserve from "../bookings/BookingReserve";
 import Map from "../map/Map";
 
 import "./RentalDetail.scss";
@@ -68,7 +69,9 @@ const RentalDetail = ({ rental: { rental, loading }, getRentalById, match }) => 
                 </div>
               </div>
             </div>
-            <div className="column is-4"> BOOKING</div>
+            <div className="column is-4">
+              <BookingReserve />
+            </div>
           </div>
         </div>
       </section>

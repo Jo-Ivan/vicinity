@@ -7,11 +7,12 @@
 - [x] implement a map api that fetches rental location
 - [x] back end should interpret a user's address and change it to coordinates
 - [x] hosting your home should have auth when submitting
+- [x] create rental model/controller/routes
+- [x] create booking model/controller/routes
 - [ ] host page should have icons for better user experience
 - [ ] truncate description if long on rental cards
-- [ ] create rental model/controller/routes
-- [ ] create message model/controller/routes
 - [ ] implement a messaging system between buyer and seller
+- [ ] create message model/controller/routes
 - [ ] finish front-end (make sure front-end and back-end auth routes are protected)
 - [ ] finish back-end using mongoDB, mongoose, and express
 

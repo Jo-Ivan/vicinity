@@ -1,10 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./BookingReserve.scss";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import BookingDatePicker from "./BookingDatePicker";
+
+import "./BookingReserve.scss";
 
 const BookingReserve = ({ rental: { rental, loading } }) => {
-  console.log(rental);
+  const [selectedDate, setSelectedDate] = useState();
+
+  const updateDates = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
     <div className="booking">
       <h3 className="booking-price">
@@ -14,7 +21,7 @@ const BookingReserve = ({ rental: { rental, loading } }) => {
       <div className="field">
         <label className="label">Dates</label>
         <div className="control">
-          <input placeholder="2020/05/19" type="text" className="input" />
+          <BookingDatePicker />
         </div>
       </div>
       <div className="field">
@@ -26,7 +33,7 @@ const BookingReserve = ({ rental: { rental, loading } }) => {
       <button className="button is-primary is-fullwidth">Reserve</button>
       <hr></hr>
       <p className="booking-note-title">People are interested in this {rental.category}</p>
-      <p className="booking-note-text">More than 20 people has checked in this rental in last month.</p>
+      <p className="booking-note-text">More than 20 people have checked in this rental last month.</p>
     </div>
   );
 };

@@ -19,6 +19,7 @@
 ### Bugs
 
 - [ ] fix auth error action when visiting page for the first time
+- [ ] google maps loads twice when requesting it for the first time
 
 ### Ideas
 
@@ -30,4 +31,3 @@
 ### Notes
 
 Link to geocoder: https://developers.google.com/maps/documentation/geocoding/start
-Don't overengineer work on other projects when finished

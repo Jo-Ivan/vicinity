@@ -9,7 +9,6 @@
 - [x] hosting your home should have auth when submitting
 - [x] create rental model/controller/routes
 - [x] create booking model/controller/routes
-- [ ] host page should have icons for better user experience
 - [ ] truncate description if long on rental cards
 - [ ] implement a messaging system between buyer and seller
 - [ ] create message model/controller/routes
@@ -23,10 +22,12 @@
 
 ### Ideas
 
+- [ ] host page should have icons for better user experience
 - [ ] on the homepage the hero can have a moving background
 - [ ] call-to-action then footer
-- [ ] 5 star rating system?
+- [ ] 5 star rating system
 - [ ] add demo payment system like stripe
+- [ ] implement pagination
 
 ### Notes
 

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+
 import "./BookingDatePicker.scss";
 
 const BookingDatePicker = () => {
-  const [startDate, setStartDate] = useState(new Date("2014/02/08"));
-  const [endDate, setEndDate] = useState(new Date("2014/02/10"));
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  console.log(moment(startDate).format("YYYY/MM/DD"), moment(endDate).format("YYYY/MM/DD"));
+
   return (
     <>
       <div className="field">
@@ -16,8 +21,10 @@ const BookingDatePicker = () => {
             selectsStart
             startDate={startDate}
             endDate={endDate}
+            minDate={new Date()}
             className="input"
             type="text"
+            strictParsing
           />
         </div>
       </div>
@@ -32,6 +39,7 @@ const BookingDatePicker = () => {
             minDate={startDate}
             className="input"
             type="text"
+            strictParsing
           />
         </div>
       </div>

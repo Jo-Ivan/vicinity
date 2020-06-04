@@ -33,7 +33,7 @@ function removeGoogleMapScript() {
   let scripts = document.head.getElementsByTagName("script");
   for (let i = scripts.length - 1; i >= 0; i--) {
     let scriptSource = scripts[i].getAttribute("src");
-    if (scriptSource != null) {
+    if (scriptSource !== null) {
       if (keywords.filter((item) => scriptSource.includes(item)).length) {
         scripts[i].remove();
         // scripts[i].parentNode.removeChild(scripts[i]);
